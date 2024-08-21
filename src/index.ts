@@ -9,13 +9,7 @@ import roomHandler from "./handlers/roomHandler";
 const app = express();
 
 // Middleware
-app.use(
-	cors({
-		origin: "*",
-		methods: ["GET", "POST"],
-		allowedHeaders: ["Content-Type"],
-	})
-);
+app.use(cors());
 
 // Create HTTP server
 const server = http.createServer(app);
