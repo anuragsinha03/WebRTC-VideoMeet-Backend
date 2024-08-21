@@ -8,8 +8,14 @@ import roomHandler from "./handlers/roomHandler";
 
 const app = express();
 
-// Middleware
-app.use(cors());
+// Configure CORS to allow requests from your frontend
+app.use(
+	cors({
+		origin: "https://webrtc-video-meet-frontend.vercel.app", // Update with your frontend URL
+		methods: ["GET", "POST"],
+		allowedHeaders: ["Content-Type"],
+	})
+);
 
 // Create HTTP server
 const server = http.createServer(app);
@@ -17,7 +23,7 @@ const server = http.createServer(app);
 // Create Socket.IO server
 const io = new Server(server, {
 	cors: {
-		origin: "*",
+		origin: "https://webrtc-video-meet-frontend.vercel.app", // Update with your frontend URL
 		methods: ["GET", "POST"],
 	},
 });
